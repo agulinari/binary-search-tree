@@ -54,8 +54,18 @@ public class BinarySearchTreeImpl implements BinarySearchTree {
     }
 
     @Override
-    public void print() {
-        printRecursive(this.root, 0);
+    public void printInOrder() {
+        inorderWalk(this.root, 0);
+    }
+
+    @Override
+    public void printPreOrder() {
+        preorderWalk(this.root, 0);
+    }
+
+    @Override
+    public void printPostOrder() {
+        postorderWalk(this.root, 0);
     }
 
     @Override
@@ -129,17 +139,38 @@ public class BinarySearchTreeImpl implements BinarySearchTree {
         return currentNode;
     }
 
-    private void printRecursive(BinaryTreeNode currentNode, Integer depth) {
+    private void inorderWalk(BinaryTreeNode currentNode, Integer depth) {
         if (currentNode == null) {
             return;
         }
+        inorderWalk(currentNode.getLeftNode(), depth + 1);
+        printNode(currentNode, depth);
+        inorderWalk(currentNode.getRightNode(), depth + 1);
+    }
 
+    private void preorderWalk(BinaryTreeNode currentNode, Integer depth) {
+        if (currentNode == null) {
+            return;
+        }
+        printNode(currentNode, depth);
+        preorderWalk(currentNode.getLeftNode(), depth + 1);
+        preorderWalk(currentNode.getRightNode(), depth + 1);
+    }
+
+    private void postorderWalk(BinaryTreeNode currentNode, Integer depth) {
+        if (currentNode == null) {
+            return;
+        }
+        postorderWalk(currentNode.getLeftNode(), depth + 1);
+        postorderWalk(currentNode.getRightNode(), depth + 1);
+        printNode(currentNode, depth);
+
+    }
+
+    private void printNode(BinaryTreeNode currentNode, Integer depth) {
         String left = (currentNode.getLeftNode() != null) ? currentNode.getLeftNode().getData().toString() : "null";
         String right = (currentNode.getRightNode() != null) ? currentNode.getRightNode().getData().toString() : "null";
         System.out.println("Data: " + currentNode.getData() + " Depth: " + depth + " LChild: " + left + " RChild: " + right);
-        printRecursive(currentNode.getLeftNode(), depth + 1);
-        printRecursive(currentNode.getRightNode(), depth + 1);
-
     }
 
 

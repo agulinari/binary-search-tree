@@ -46,9 +46,19 @@ public interface BinarySearchTree {
     DeepestNodes deepestNodes();
 
     /**
-     * Prints the BST
+     * Prints the BST using InOrder walk
      */
-    void print();
+    void printInOrder();
+
+    /**
+     * Prints the BST using PreOrder walk
+     */
+    void printPreOrder();
+
+    /**
+     * Prints the BST using PostOrder walk
+     */
+    void printPostOrder();
 
     /**
      * Returns the root node
