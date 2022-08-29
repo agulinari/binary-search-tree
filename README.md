@@ -9,6 +9,16 @@ Run maven command
 mvn clean install
 ```
 
+Import dependency in your pom
+
+```xml
+<dependency>
+    <groupId>com.binarytree.api</groupId>
+    <artifactId>binary-search-tree</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
 ## Usage
 
 ```java
