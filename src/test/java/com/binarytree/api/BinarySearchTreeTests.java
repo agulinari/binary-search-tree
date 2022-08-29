@@ -5,6 +5,8 @@ import com.binarytree.impl.BinaryTreeNode;
 import com.binarytree.impl.DeepestNodes;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BinarySearchTreeTests {
@@ -45,6 +47,24 @@ public class BinarySearchTreeTests {
         assertEquals(33, deepestNodes.getNodes().get(0).getData());
         assertEquals(92, deepestNodes.getNodes().get(1).getData());
 
+    }
+
+    @Test
+    void searchElementTest() {
+        Integer[] array = {26, 82, 16, 92, 33};
+        BinarySearchTree bst = new BinarySearchTreeImpl(array);
+
+        Optional<BinaryTreeNode> node = bst.search(82);
+        assertEquals(82, node.get().getData());
+    }
+
+    @Test
+    void searchElementNotFoundTest() {
+        Integer[] array = {26, 82, 16, 92, 33};
+        BinarySearchTree bst = new BinarySearchTreeImpl(array);
+
+        Optional<BinaryTreeNode> node = bst.search(15);
+        assertEquals(Optional.empty(), node);
     }
 
     @Test
